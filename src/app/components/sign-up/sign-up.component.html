@@ -1,1 +1,135 @@
-<p>sign-up works!</p>
+<!-- Overlay -->
+<div class="overlay fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-50 flex items-center justify-center z-50" *ngIf="termsConditions">
+
+    <!-- Modal -->
+  <div class="bg-white w-4/5 h-3/5 md:w-2/5 md:h-4/5 p-8 rounded-xl shadow-xl overflow-y-auto">
+  
+      <!-- Modal Content -->
+      <h2 class="text-xl font-bold mb-4 custom-dark">Términos y Condiciones para el Tratamiento de Datos Personales</h2>
+  
+      <p class="mb-4"><strong>Última actualización: 26 de septiembre de 2024</strong></p>
+  
+      <p class="mb-4">En cumplimiento de lo dispuesto por la Ley 1581 de 2012 y el Decreto 1377 de 2013, por medio de los cuales se dictan disposiciones generales para la protección de datos personales en Colombia, RACCON JR (en adelante "la Empresa"), en calidad de responsable del tratamiento de los datos personales que recolecta, solicita la aceptación de los siguientes términos y condiciones para el manejo, tratamiento y protección de los datos personales de sus usuarios, clientes y empleados.</p>
+  
+      <h3 class="text-lg font-bold mb-2 custom-dark">1. Definiciones</h3>
+      <ul class="list-disc ml-5 mb-4">
+        <li><strong>Dato personal</strong>: Cualquier información vinculada o que pueda asociarse a una o varias personas naturales determinadas o determinables.</li>
+        <li><strong>Tratamiento</strong>: Cualquier operación o conjunto de operaciones sobre datos personales, tales como la recolección, almacenamiento, uso, circulación o supresión.</li>
+        <li><strong>Encargado del tratamiento</strong>: Persona natural o jurídica, pública o privada, que por sí misma o en asocio con otros, realice el tratamiento de datos personales por cuenta del responsable.</li>
+        <li><strong>Responsable del tratamiento</strong>: Persona natural o jurídica, pública o privada, que decida sobre la base de datos y/o el tratamiento de los datos.</li>
+      </ul>
+  
+      <h3 class="text-lg font-bold mb-2 custom-dark">2. Recolección de Datos Personales</h3>
+      <p class="mb-4">RACCON JR podrá recolectar datos personales de los usuarios a través de diferentes canales, como, pero no limitándose a:</p>
+      <ul class="list-disc ml-5 mb-4">
+        <li>Formularios en línea</li>
+        <li>Correo electrónico</li>
+        <li>Contratos físicos y digitales</li>
+        <li>Eventos promocionales y encuestas</li>
+        <li>Interacciones en redes sociales</li>
+      </ul>
+  
+      <h3 class="text-lg font-bold mb-2 custom-dark">3. Finalidades del Tratamiento de Datos Personales</h3>
+      <p class="mb-4">Los datos personales recolectados por RACCON JR serán utilizados para los siguientes fines:</p>
+      <ul class="list-disc ml-5 mb-4">
+        <li><strong>Gestión administrativa y comercial</strong>: Recolección de datos con el fin de ofrecer, prestar, promocionar y mejorar nuestros productos y servicios.</li>
+        <li><strong>Cumplimiento legal</strong>: Cumplir con las obligaciones legales que le corresponden a la Empresa.</li>
+        <li><strong>Marketing</strong>: Envío de información publicitaria, promociones, ofertas y campañas relacionadas con los productos o servicios ofrecidos por la Empresa.</li>
+        <li><strong>Relación contractual</strong>: Gestión de las relaciones contractuales con empleados, clientes y proveedores, así como la ejecución de contratos vigentes.</li>
+        <li><strong>Análisis estadístico</strong>: Utilización de los datos para realizar estudios estadísticos y de comportamiento con fines comerciales y de mejora de productos.</li>
+      </ul>
+  
+      <h3 class="text-lg font-bold mb-2 custom-dark">4. Derechos del Titular de los Datos</h3>
+      <p class="mb-4">Conforme a la legislación colombiana, los titulares de los datos personales tienen los siguientes derechos:</p>
+      <ul class="list-disc ml-5 mb-4">
+        <li><strong>Acceso y consulta</strong>: El titular podrá acceder a sus datos personales y conocer el tratamiento que se le ha dado.</li>
+        <li><strong>Rectificación</strong>: El titular podrá solicitar la actualización o corrección de los datos cuando estos sean inexactos o incompletos.</li>
+        <li><strong>Cancelación o supresión</strong>: El titular podrá solicitar la eliminación de sus datos personales cuando no se requieran para los fines establecidos o cuando se haya superado el plazo autorizado para su tratamiento.</li>
+        <li><strong>Oposición</strong>: El titular podrá oponerse al tratamiento de sus datos personales en cualquier momento, salvo en los casos en los que la ley disponga lo contrario.</li>
+      </ul>
+  
+      <h3 class="text-lg font-bold mb-2 custom-dark">5. Procedimiento para el Ejercicio de los Derechos</h3>
+      <p class="mb-4">El titular de los datos personales podrá ejercer sus derechos mediante comunicación escrita dirigida a RACCON JR a través de los siguientes canales de contacto:</p>
+  
+      <h3 class="text-lg font-bold mb-2 custom-dark">6. Seguridad de los Datos</h3>
+      <p class="mb-4">RACCON JR se compromete a garantizar la protección y confidencialidad de los datos personales de sus usuarios. Para ello, implementa medidas técnicas, humanas y administrativas razonables para evitar la pérdida, mal uso, acceso no autorizado y/o robo de los datos personales.</p>
+  
+      <h3 class="text-lg font-bold mb-2 custom-dark">7. Transferencia y Transmisión de Datos Personales</h3>
+      <p class="mb-4">Los datos personales recolectados podrán ser transferidos o transmitidos a terceros en los siguientes casos:</p>
+      <ul class="list-disc ml-5 mb-4">
+        <li>Para el cumplimiento de obligaciones contractuales o legales.</li>
+        <li>A empresas subsidiarias o filiales de RACCON JR, dentro y fuera de Colombia.</li>
+        <li>A proveedores de servicios con los que la Empresa tenga relaciones contractuales, siempre que se garantice un tratamiento acorde a las leyes colombianas sobre protección de datos personales.</li>
+      </ul>
+  
+      <h3 class="text-lg font-bold mb-2 custom-dark">8. Modificaciones a la Política de Tratamiento de Datos</h3>
+      <p class="mb-4">RACCON JR se reserva el derecho a modificar los términos y condiciones de esta política de tratamiento de datos en cualquier momento. Cualquier cambio sustancial será notificado a los titulares de los datos mediante los medios que la Empresa considere adecuados.</p>
+  
+      <h3 class="text-lg font-bold mb-2 custom-dark">9. Vigencia</h3>
+      <p class="mb-4">La presente política de tratamiento de datos personales está vigente a partir de la fecha de publicación y permanecerá en vigor mientras RACCON JR realice el tratamiento de los datos personales.</p>
+  
+      <h3 class="text-lg font-bold mb-2 custom-dark">10. Aceptación</h3>
+      <p class="mb-4">El titular de los datos personales manifiesta haber leído, comprendido y aceptado los términos y condiciones aquí establecidos al hacer uso de los productos y servicios de RACCON JR o al proporcionar voluntariamente sus datos personales.</p>
+  
+      <div class="w-full h-10">
+          <button class="mt-4 w-full h-full py-2 px-4 bg-[#03071e] text-white rounded-lg shadow hover:bg-blue-700" (click)="termsConditions = false">Cerrar</button>
+
+      </div>
+  
+    </div>
+  
+  </div>
+  
+
+<div class="bg-gradient-to-t from-[#e0e1dd] to-[#edede9] w-screen h-screen flex justify-center items-center">
+    <div class="bg-white w-4/5 sm:w-2/6 h-auto py-6 rounded-3xl shadow-xl flex items-center flex-col">
+        <div class="py-6">
+            <img class="w-20 h-16" src="img/RACCON.png" alt="">
+        </div>
+        <div class="flex flex-col w-full h-full px-1 lg:px-7 xl:px-7 sm:px-7">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="flex flex-col px-10 pt-2">
+                    <label for="" class="text-xl font-bold custom-dark">FullName</label>
+                    <div class="w-full h-auto rounded-full bg-slate-200 shadow-xl flex items-center justify-center my-3">
+                        <input class="px-4 w-full mx-5 bg-transparent border-none outline-none my-2" type="text" placeholder="Santiago Jiménez Ramírez" name="" id="" formControlName="fullName">
+                    </div>
+                </div>
+                <div class="flex flex-col px-10 pt-2">
+                    <label for="" class="text-xl font-bold custom-dark">Email</label>
+                    <div class="w-full h-auto rounded-full bg-slate-200 shadow-xl flex items-center justify-center my-3">
+                        <input class="px-4 w-full mx-5 bg-transparent border-none outline-none my-2" type="email" placeholder="santiago.jr.dev@gmail.com" name="" id="" formControlName="email">
+                    </div>
+                </div>
+                <div class="flex flex-col px-10 pt-2">
+                    <label for="" class="text-xl font-bold custom-dark">Username</label>
+                    <div class="w-full h-auto rounded-full bg-slate-200 shadow-xl flex items-center justify-center my-3">
+                        <input class="px-4 w-full mx-5 bg-transparent border-none outline-none my-2" type="text" placeholder="Santiago JR" name="" id="" formControlName="username">
+                    </div>
+                </div>
+                <div class="flex flex-col px-10 pt-2">
+                    <label for="" class="text-xl font-bold custom-dark">Password</label>
+                    <div class="w-full h-auto rounded-full bg-slate-200 shadow-xl flex items-center justify-center my-3">
+                        <input class="px-4 w-full mx-5 bg-transparent border-none outline-none my-2" type="password" placeholder="**********" name="" id="" formControlName="password">
+                    </div>
+                </div>
+                <div class="flex px-10">
+                    <div class="h-1/5 w-6 flex justify-center items-center">
+                        <input class="my-1" type="checkbox" formControlName="checkbox">
+                    </div>
+                    <div class="h-full flex justify-start items-start">
+                        <label for="" class="text-[11px]">I have read and accept the <label class="font-bold underline text-blue-900 cursor-pointer" for="" (click)="termsConditions = true">terms and conditions</label></label>
+                    </div>
+                </div>
+                <div class="flex flex-col px-10 py-3 ">
+                    <button class="w-full h-auto py-2 bg-[#03071e] text-white font-bold rounded-lg" 
+                    [ngClass]="{'opacity-50 cursor-not-allowed': !form.valid}"
+                    [disabled]="!form.valid">Submit</button>
+                </div>
+                <div class="w-full flex justify-center items-center pb-4">
+                    <label class="text-[12px]" for="">Do you already have an account? </label><a [href]="'/login'" class="text-[12px] px-2 text-[#03071e] font-bold">Log in</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

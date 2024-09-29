@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,21 @@ export class LoginComponent {
     'password': new FormControl("", Validators.required)
   })
 
-  constructor(private route: Router){
+  constructor(private route: Router,
+    private _userService : UserService,
+  ){
 
   }
 
   onSubmit() {
-    
+    this._userService.login(this.form.value).subscribe({
+      next: (response) =>{
+        
+      },
+      error:(e)=>{
+        
+      }
+    })
   }
 
 }

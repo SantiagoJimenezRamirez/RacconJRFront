@@ -1,5 +1,6 @@
+// src/app/services/user.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../enviroments/enviroment';
@@ -8,7 +9,6 @@ import { environment } from '../enviroments/enviroment';
   providedIn: 'root'
 })
 export class UserService {
-
   constructor(private http: HttpClient, private router: Router) {}
 
   register(user: any): Observable<any> {
@@ -29,9 +29,8 @@ export class UserService {
   }
 
   findUserById(id: any): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/api/user/${id}`); // Cambié la URL para incluir el ID como parámetro
-}
-
+    return this.http.get(`${environment.apiUrl}/api/user/${id}`);
+  }
 
   isLoggedIn() {
     return localStorage.getItem('token');

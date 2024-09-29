@@ -35,6 +35,7 @@ module.exports = {
 
       colors: {
         'bg-body': '#1E40AF', // Tu color personalizado
+        'custom-dark': '#03071e', // Define un nuevo color
       },
     },
   },
