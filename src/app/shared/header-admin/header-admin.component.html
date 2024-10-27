@@ -1,0 +1,24 @@
+
+    <div class="w-full h-16 flex items-center justify-between bg-slate-200 px-4">
+        <div class="flex justify-center items-center h-full w-auto">
+            <img [src]="getSvg()" alt="" class="px-4 invert">
+            <label class="text-3xl font-bold flex justify-center items-center" for=""> {{ section | titlecase }} </label>
+        </div>
+        <div class="h-full w-auto flex justify-center items-center  py-5 px-4">
+            <div class="flex bg-white rounded-full">
+                <img src="svg/search.svg" alt="" class="py-1 pl-2">
+                <input type="text" class="border-none outline-none bg-transparent text-black p-0 m-0 mx-3 my-2">
+            </div>
+            <div class="w-px h-full bg-gray-500 mx-2"></div>
+            <img src="svg/message.svg" alt="" class="cursor-pointer">
+            <img src="svg/bell.svg" alt="" class="ml-2 cursor-pointer">
+            <div class="w-px h-full bg-gray-500 mx-2"></div>
+            <div class="h-full w-auto px-4 py-2 flex items-center">
+                <div class="w-8 h-8 bg-gray-400 rounded-full flex justify-center items-center">
+                    <img [src]="srcPhoto" alt="profile">
+                </div>
+                <label for="" class="font-bold text-lg mx-3"> {{ username | titlecase }} </label>
+                <img src="svg/arrow.svg" alt="" class="rotate-[180deg]">
+            </div>
+        </div>
+    </div>

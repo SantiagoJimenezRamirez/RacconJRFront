@@ -1,0 +1,34 @@
+<div class="w-full h-full flex flex-col items-center bg-custom-dark py-4 rounded-r-xl min-w-full">
+    <div class="w-full flex justify-center items-center">
+        <img class="w-12 h-10" src="img/RACCON.png" alt="">
+        <label class="font-extrabold text-white pl-3 text-xl" for="RACCON SAS">RACCON SAS</label>
+    </div>
+    <hr class="w-4/5">
+    <div class="w-full flex flex-col justify-center items-center py-20">
+        <div *ngFor="let item of section"
+            class="h-12 w-full flex px-10 justify-start items-center hover:bg-[#081147] cursor-pointer">
+            <img [src]="getSvg(item)" alt="" class=" px-4">
+            <label class="font-semibold text-white cursor-pointer" for=""> {{item | titlecase}} </label>
+        </div>
+    </div>
+    <div class="w-full flex flex-col justify-center items-center">
+        <div *ngFor="let item of sectionInfo"
+            class="h-12 w-full flex px-10 justify-start items-center hover:bg-[#081147] cursor-pointer" (click)="redirecTo(item)">
+            <img [src]="getSvg(item)" alt="" class=" px-4">
+            <label class="font-semibold text-white cursor-pointer" for=""> {{item | titlecase}} </label>
+        </div>
+        <label
+            class="w-16 h-8 my-10 shadow-inner rounded-full flex justify-around items-center overflow-hidden outline outline-2 outline-offset-2">
+            <input type="checkbox" class="peer hidden" />
+            <div
+                class="w-6 h-6 flex justify-center items-center text-white duration-500 rounded-full peer-checked:-translate-x-8">
+                <img src="svg/sun.svg" alt="">
+            </div>
+            <div
+                class="w-6 h-6 flex justify-center items-center text-white rounded-full duration-500 translate-x-8 peer-checked:translate-x-0">
+                <img src="svg/moon.svg" alt="">
+            </div>
+        </label>
+
+    </div>
+</div>
