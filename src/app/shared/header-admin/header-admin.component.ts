@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-admin',
@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './header-admin.component.scss'
 })
 export class HeaderAdminComponent {
-  section = "dashboard";
+  @Input() section = "dashboard";
   srcPhoto = "svg/profile.svg";
   username = "Santiago JR";
 

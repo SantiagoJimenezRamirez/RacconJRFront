@@ -5,9 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class TitleService {
 
+  title = ""
   constructor() { }
 
   titleWindow(title:string){
-    return title;
+    this.title = title;
+  }
+
+  getTitle(){
+    return this.title
   }
 }

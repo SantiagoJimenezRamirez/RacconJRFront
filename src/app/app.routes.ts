@@ -7,13 +7,22 @@ import { AuthGuard } from './guard/auth.guard';
 import { ShopComponent } from './customer/components/shop/shop.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { MenuComponent } from './shared/menu/menu.component';
+import { TrasnsactionsComponent } from './admin/components/trasnsactions/trasnsactions.component';
+import { WalletComponent } from './admin/components/wallet/wallet.component';
+import { BudgetComponent } from './admin/components/budget/budget.component';
+import { AnaliticsComponent } from './admin/components/analitics/analitics.component';
+import { SettingsComponent } from './admin/components/settings/settings.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirige a /login en la ruta raíz
     { path: 'login', component: LoginComponent,  },
     { path: 'sign-up', component: SignUpComponent,  },
     { path: 'dashboard', component: DashboardComponent,  },
-    { path: 'transactions', component: MenuComponent,  },
     { path: 'shop', component: ShopComponent,  },
-    { path: 'home', component: HomeComponent, }, // Ruta protegida, solo accesible si está autenticado
+    { path: 'home', component: HomeComponent, }, 
+    { path: 'transactions', component: TrasnsactionsComponent, }, 
+    { path: 'wallet', component: WalletComponent, }, 
+    { path: 'budget', component: BudgetComponent, }, 
+    { path: 'analitics', component: AnaliticsComponent, }, 
+    { path: 'settings', component: SettingsComponent, }, 
 ];
