@@ -11,7 +11,7 @@ import { TitleService } from '../../service/title.service';
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent {
-  section = ["dashboard", "transactions", "wallet", "budget", "analitics", "settings"]
+  section = ["dashboard", "inventory", "wallet", "budget", "analitics", "settings"]
   sectionInfo = ["help", "log-out"]
   selectedItem: string | null = null;
 
