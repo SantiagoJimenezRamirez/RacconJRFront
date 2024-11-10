@@ -1,0 +1,45 @@
+<!-- Modal Background -->
+<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
+    <!-- Modal Content -->
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+      <h2 class="text-xl text-center font-semibold mb-4">Add Product</h2>
+      
+      <!-- Formulario -->
+      <form (ngSubmit)="onSubmit()" [formGroup]="productForm">
+        
+        <!-- Subir foto -->
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Upload Photo</label>
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" class="w-full px-3 py-2 border rounded-lg flex flex-col" />
+        </div>
+  
+        <!-- Name Product -->
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Product Name</label>
+          <input type="text" formControlName="name" class="w-full px-3 py-2 border rounded-lg" />
+        </div>
+  
+        <!-- Price -->
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Price</label>
+          <input type="text" formControlName="price" class="w-full px-3 py-2 border rounded-lg" />
+        </div>
+  
+        <!-- Stock -->
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Stock</label>
+          <input type="text" formControlName="stock" class="w-full px-3 py-2 border rounded-lg" />
+        </div>
+  
+        <!-- Description -->
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Description</label>
+          <textarea formControlName="description" class="w-full px-3 py-2 border rounded-lg"></textarea>
+        </div>
+  
+        <!-- Submit Button -->
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg w-full hover:bg-blue-600">Add Product</button>
+      </form>
+    </div>
+  </div>
+  

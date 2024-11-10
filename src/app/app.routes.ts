@@ -12,6 +12,7 @@ import { WalletComponent } from './admin/components/wallet/wallet.component';
 import { BudgetComponent } from './admin/components/budget/budget.component';
 import { AnaliticsComponent } from './admin/components/analitics/analitics.component';
 import { SettingsComponent } from './admin/components/settings/settings.component';
+import { FormComponent } from './admin/shared/form/form.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirige a /login en la ruta raíz
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path: 'sign-up', component: SignUpComponent,  },
     { path: 'dashboard', component: DashboardComponent,  },
     { path: 'shop', component: ShopComponent,  },
+    { path: 'pruebas', component: FormComponent,  },
     { path: 'home', component: HomeComponent, }, 
     { path: 'inventory', component: TrasnsactionsComponent, }, 
     { path: 'wallet', component: WalletComponent, }, 
