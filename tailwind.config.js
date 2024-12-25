@@ -5,8 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+
       backgroundImage: {
         'bg-home': 'linear-gradient(to bottom, #ffffff, #f8f9fa)',
+        'custom-buttons': 'linear-gradient(to right, #03071e, #19606F)',
       },
       keyframes: {
         fadeIn: {
