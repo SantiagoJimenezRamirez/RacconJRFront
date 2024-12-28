@@ -18,4 +18,8 @@ export class ProductsService {
   addProduct(product:any): Observable<any>{
     return this.http.post(`${environment.apiUrl}/product/add`, product);
   }
+
+  editProduct(product:any, id:number): Observable<any>{
+    return this.http.put(`${environment.apiUrl}/product/update/${id}`, product);
+  }
 }

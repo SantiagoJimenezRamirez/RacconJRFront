@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductsService } from '../../../service/products.service';
 import Swal from 'sweetalert2';
@@ -12,10 +12,13 @@ import { MatTableModule } from '@angular/material/table';
   templateUrl: './products-add.component.html',
   styleUrl: './products-add.component.scss'
 })
-export class ProductsAddComponent {
+export class ProductsAddComponent implements OnInit{
 
   @Output() close = new EventEmitter<boolean>();
   @Output() save = new EventEmitter<any>();
+  @Input() product:any;
+  @Input() updateOrCreate = true;
+  title = 'Agregar Producto'
 
   productForm: FormGroup;
   selectedFile: File | null = null;
@@ -29,6 +32,14 @@ export class ProductsAddComponent {
       imagePath: [''],
     });
   }
+  ngOnInit(): void {
+    if(!this.updateOrCreate){
+
+      this.productForm.patchValue(this.product);
+
+      this.title = "Editar Producto"
+    }
+  }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -38,29 +49,56 @@ export class ProductsAddComponent {
   }
 
   onSubmit(): void {
-    this._productService.addProduct(this.productForm.value).subscribe({
-      next: (response: any) => {
-        Swal.fire({
-          title: 'Succescfull',
-          text: response.msg,
-          icon: 'success',
-          confirmButtonText: 'Aceptar'
-        }).then((result) => {
-          if (result.isConfirmed) {
-
-          }
-        });
-      },
-      error: (e) => {
-        Swal.fire({
-          title: 'Error',
-          text: e.error.msg,
-          icon: 'error',
-          confirmButtonText: 'Reintentar'
-        });
-      }
-    })
-  }
+    console.log(this.product)
+    if(this.updateOrCreate){
+      this._productService.addProduct(this.productForm.value).subscribe({
+        next: (response: any) => {
+          Swal.fire({
+            title: 'Succescfull',
+            text: response.msg,
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+          }).then((result) => {
+            if (result.isConfirmed) {
+  
+            }
+          });
+        },
+        error: (e) => {
+          Swal.fire({
+            title: 'Error',
+            text: e.error.msg,
+            icon: 'error',
+            confirmButtonText: 'Reintentar'
+          });
+        }
+      })
+    }else{
+      
+      this._productService.editProduct(this.productForm.value, this.product.id).subscribe({
+        next: (response: any) => {
+          Swal.fire({
+            title: 'Succescfull',
+            text: response.msg,
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+          }).then((result) => {
+            if (result.isConfirmed) {
+  
+            }
+          });
+        },
+        error: (e) => {
+          Swal.fire({
+            title: 'Error',
+            text: e.error.msg,
+            icon: 'error',
+            confirmButtonText: 'Reintentar'
+          });
+        }
+      })
+    }
+    }
 
   closeModal(): void {
     this.close.emit(false);

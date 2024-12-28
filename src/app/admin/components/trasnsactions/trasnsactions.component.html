@@ -12,7 +12,7 @@
           </p>
       
           <div class="flex h-10 justify-end items-center px-10 my-6">
-            <button (click)="isVisible = true"
+            <button (click)="addProduct()"
               class="h-full relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-[2px] bg-black rounded-[16px] bg-custom-buttons active:scale-95">
               <span
                 class="w-full h-full flex items-center gap-2 px-8 py-3 text-white rounded-[14px] bg-custom-buttons">
@@ -66,4 +66,7 @@
 </div>
 
 <app-products-add *ngIf="isVisible" 
-(close)="reciveEmit($event)"></app-products-add>
+[product]="product"
+[updateOrCreate]="create"
+(close)="reciveEmit($event)"
+></app-products-add>

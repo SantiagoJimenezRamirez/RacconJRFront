@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuComponent } from "../../../shared/menu/menu.component";
-import { HeaderAdminComponent } from "../../../shared/header-admin/header-admin.component";
 import { TitleService } from '../../../service/title.service';
 import { ProductsAddComponent } from "../products-add/products-add.component";
 import { CommonModule } from '@angular/common';
@@ -17,9 +16,8 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrl: './trasnsactions.component.scss'
 })
 export class TrasnsactionsComponent implements OnInit {
-onActionClick(_t29: any) {
-throw new Error('Method not implemented.');
-}
+  create = true;
+  product:any;
   data:any;
   isVisible= false;
   title = "";
@@ -51,9 +49,15 @@ throw new Error('Method not implemented.');
     this.isVisible = event;
   }
 
+  addProduct(){
+    this.create = true;
+    this.isVisible = true;
+  }
+
   editItem(element: any): void {
-    console.log('Editar:', element);
-    // Agrega lógica para editar
+    this.product = element;
+    this.create = false;
+    this.isVisible = true;
   }
   
   deleteItem(element: any): void {
