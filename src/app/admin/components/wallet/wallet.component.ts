@@ -6,7 +6,7 @@ import { TitleService } from '../../../service/title.service';
 @Component({
   selector: 'app-wallet',
   standalone: true,
-  imports: [MenuComponent, HeaderAdminComponent],
+  imports: [],
   templateUrl: './wallet.component.html',
   styleUrl: './wallet.component.scss'
 })

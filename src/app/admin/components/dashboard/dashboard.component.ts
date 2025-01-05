@@ -7,7 +7,7 @@ import { createChart, IChartApi, ISeriesApi, LineStyle } from 'lightweight-chart
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MenuComponent, CommonModule, HeaderAdminComponent],
+  imports: [CommonModule,],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

@@ -6,7 +6,7 @@ import { TitleService } from '../../../service/title.service';
 @Component({
   selector: 'app-budget',
   standalone: true,
-  imports: [MenuComponent, HeaderAdminComponent],
+  imports: [],
   templateUrl: './budget.component.html',
   styleUrl: './budget.component.scss'
 })

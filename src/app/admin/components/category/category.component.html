@@ -1,3 +1,65 @@
-<div class="w-full h-screen">
-    <p>Hola mundo</p>
-</div>
+<div class="max-w-screen max-h-screen flex bg-white overflow-y-hidden">
+    <div class="w-full h-screen overflow-hidden">
+        <div class="flex flex-col w-full h-full overflow-hidden">
+          <label for="" class="text-custom-dark text-2xl font-bold mt-4 ml-10">
+            Control de Categorias de Inventario
+          </label>
+          <p class="font-semibold text-gray-600 text-base px-10">
+            Consulta el listado completo de Categorias disponibles, verifica sus nombres y descripciones, y realiza actualizaciones o ajustes según sea necesario.
+          </p>
+      
+          <div class="flex h-10 justify-end items-center px-10 my-6">
+            <button (click)="addProduct()"
+              class="h-full relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-[2px] bg-black rounded-[16px] bg-custom-buttons active:scale-95">
+              <span
+                class="w-full h-full flex items-center gap-2 px-8 py-3 text-white rounded-[14px] bg-custom-buttons">
+                <img src="svg/add.svg" alt="">
+                Add Category
+              </span>
+            </button>
+          </div>
+      
+          <div class="flex-grow overflow-auto p-6">
+            <div class="mat-elevation-z8 overflow-auto">
+                <table mat-table [dataSource]="data" class="mat-table">
+                    <!-- Columna fija: acciones -->
+                    <ng-container matColumnDef="acciones">
+                      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                      <td mat-cell *matCellDef="let element">
+                        <!-- Botón con menú -->
+                        <button mat-icon-button [matMenuTriggerFor]="actionMenu">
+                          <img src="svg/more.svg" alt="Más acciones" width="24" height="24" />
+                        </button>
+                  
+                        <!-- Menú desplegable -->
+                        <mat-menu #actionMenu="matMenu">
+                          <button mat-menu-item (click)="editItem(element)">
+                            <mat-icon>edit</mat-icon>
+                            <span>Editar</span>
+                          </button>
+                          <button mat-menu-item (click)="deleteItem(element)">
+                            <mat-icon>delete</mat-icon>
+                            <span>Eliminar</span>
+                          </button>
+                        </mat-menu>
+                      </td>
+                    </ng-container>
+                  
+                    <!-- Columnas dinámicas -->
+                    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column.original">
+                      <th mat-header-cell *matHeaderCellDef>{{ column.display }}</th>
+                      <td mat-cell *matCellDef="let element">{{ element[column.original] }}</td>
+                    </ng-container>
+                  
+                    <!-- Cabecera y filas -->
+                    <tr mat-header-row *matHeaderRowDef="columnKeys"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columnKeys;"></tr>
+                  </table>                  
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <app-category-add></app-category-add>

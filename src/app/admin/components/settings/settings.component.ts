@@ -6,7 +6,7 @@ import { TitleService } from '../../../service/title.service';
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [MenuComponent, HeaderAdminComponent],
+  imports: [],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })
