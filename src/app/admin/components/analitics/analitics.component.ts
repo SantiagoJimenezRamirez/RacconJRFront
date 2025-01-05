@@ -6,7 +6,7 @@ import { TitleService } from '../../../service/title.service';
 @Component({
   selector: 'app-analitics',
   standalone: true,
-  imports: [MenuComponent, HeaderAdminComponent],
+  imports: [],
   templateUrl: './analitics.component.html',
   styleUrl: './analitics.component.scss'
 })

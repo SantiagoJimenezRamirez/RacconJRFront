@@ -7,11 +7,12 @@ import { ProductsService } from '../../../service/products.service';
 import {MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-trasnsactions',
   standalone: true,
-  imports: [MenuComponent, ProductsAddComponent, CommonModule, MatTableModule, MatIconModule, MatMenuModule],
+  imports: [ProductsAddComponent, CommonModule, MatTableModule, MatIconModule, MatMenuModule],
   templateUrl: './trasnsactions.component.html',
   styleUrl: './trasnsactions.component.scss'
 })
@@ -61,7 +62,41 @@ export class TrasnsactionsComponent implements OnInit {
   }
   
   deleteItem(element: any): void {
-    console.log('Eliminar:', element);
-    // Agrega lógica para eliminar
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción eliminará el producto de forma permanente.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._productService.deleteProduct(element.id).subscribe({
+          next: (response: any) => {
+            console.log('Producto eliminado:', response);
+            Swal.fire(
+              '¡Eliminado!',
+              'El producto ha sido eliminado con éxito.',
+              'success'
+            );
+          },
+          error: (err) => {
+            console.error('Error al eliminar el producto:', err);
+            Swal.fire(
+              'Error',
+              'Hubo un problema al eliminar el producto.',
+              'error'
+            );
+          }
+        });
+      } else {
+        Swal.fire(
+          'Cancelado',
+          'El producto no fue eliminado.',
+          'info'
+        );
+      }
+    });
   }
+  
 }

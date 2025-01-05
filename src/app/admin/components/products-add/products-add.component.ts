@@ -49,18 +49,28 @@ export class ProductsAddComponent implements OnInit{
   }
 
   onSubmit(): void {
-    console.log(this.product)
-    if(this.updateOrCreate){
-      this._productService.addProduct(this.productForm.value).subscribe({
+    if (this.productForm.invalid) return;
+  
+    const formData = new FormData();
+    Object.keys(this.productForm.controls).forEach(key => {
+      formData.append(key, this.productForm.get(key)?.value);
+    });
+ 
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
+    }
+  
+    if (this.updateOrCreate) {
+      this._productService.addProduct(formData).subscribe({
         next: (response: any) => {
           Swal.fire({
-            title: 'Succescfull',
+            title: 'Successful',
             text: response.msg,
             icon: 'success',
             confirmButtonText: 'Aceptar'
           }).then((result) => {
             if (result.isConfirmed) {
-  
+              this.save.emit(response.data);
             }
           });
         },
@@ -72,19 +82,18 @@ export class ProductsAddComponent implements OnInit{
             confirmButtonText: 'Reintentar'
           });
         }
-      })
-    }else{
-      
-      this._productService.editProduct(this.productForm.value, this.product.id).subscribe({
+      });
+    } else {
+      this._productService.editProduct(formData, this.product.id).subscribe({
         next: (response: any) => {
           Swal.fire({
-            title: 'Succescfull',
+            title: 'Successful',
             text: response.msg,
             icon: 'success',
             confirmButtonText: 'Aceptar'
           }).then((result) => {
             if (result.isConfirmed) {
-  
+              this.save.emit(response.data);
             }
           });
         },
@@ -96,9 +105,10 @@ export class ProductsAddComponent implements OnInit{
             confirmButtonText: 'Reintentar'
           });
         }
-      })
+      });
     }
-    }
+  }
+  
 
   closeModal(): void {
     this.close.emit(false);

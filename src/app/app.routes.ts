@@ -12,17 +12,21 @@ import { WalletComponent } from './admin/components/wallet/wallet.component';
 import { BudgetComponent } from './admin/components/budget/budget.component';
 import { AnaliticsComponent } from './admin/components/analitics/analitics.component';
 import { SettingsComponent } from './admin/components/settings/settings.component';
+import { CategoryComponent } from './admin/components/category/category.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirige a /login en la ruta raíz
     { path: 'login', component: LoginComponent,  },
     { path: 'sign-up', component: SignUpComponent,  },
-    { path: 'dashboard', component: DashboardComponent,  },
     { path: 'shop', component: ShopComponent,  },
     { path: 'home', component: HomeComponent, }, 
-    { path: 'inventory', component: TrasnsactionsComponent, }, 
-    { path: 'wallet', component: WalletComponent, }, 
-    { path: 'budget', component: BudgetComponent, }, 
-    { path: 'analitics', component: AnaliticsComponent, }, 
-    { path: 'settings', component: SettingsComponent, }, 
+    { path: 'admin', component: MenuComponent, children:[
+        {path: 'category', component: CategoryComponent},
+        { path: 'dashboard', component: DashboardComponent,  },
+        { path: 'inventory', component: TrasnsactionsComponent, }, 
+        { path: 'wallet', component: WalletComponent, }, 
+        { path: 'budget', component: BudgetComponent, }, 
+        { path: 'analitics', component: AnaliticsComponent, }, 
+        { path: 'settings', component: SettingsComponent, },
+    ]}
 ];

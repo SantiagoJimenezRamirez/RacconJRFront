@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { TitleService } from '../../service/title.service';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent {
-  section = ["dashboard", "inventory", "wallet", "budget", "analitics", "settings"]
+  section = ["dashboard", "inventory", "wallet", "budget", "analitics", "settings", "category"]
   sectionInfo = ["help", "log-out"]
   selectedItem: string | null = null;
 
@@ -26,6 +26,6 @@ export class MenuComponent {
 
   redirectTo(item: string) {
     this._titleService.titleWindow(item)
-    this.router.navigate([`/${item.toLowerCase()}`]); // Navega a la ruta correspondiente
+    this.router.navigate([`/admin/${item.toLowerCase()}`]); // Navega a la ruta correspondiente
   }
 }
