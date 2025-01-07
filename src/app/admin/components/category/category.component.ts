@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { CategoryAddComponent } from "../category-add/category-add.component";
+import { CategoryService } from '../../../service/category.service';
 
 @Component({
   selector: 'app-category',
@@ -16,7 +17,7 @@ import { CategoryAddComponent } from "../category-add/category-add.component";
 })
 export class CategoryComponent {
 create = true;
-  product:any;
+  category:any;
   data:any;
   isVisible= false;
   title = "";
@@ -28,15 +29,15 @@ create = true;
   // Incluye "acciones" al inicio
   columnKeys = ['acciones', ...this.displayedColumns.map(col => col.original)];
 
-  constructor(private _titleService: TitleService, private _productService: ProductsService){
+  constructor(private _titleService: TitleService, private _categoryService: CategoryService){
 
   }
   ngOnInit(): void {
     this.title = this._titleService.getTitle()
 
-  this._productService.getAll().subscribe({
+  this._categoryService.getAll().subscribe({
     next: (response) =>{
-      this.data = response.products
+      this.data = response
     }
   })
   }
@@ -51,7 +52,8 @@ create = true;
   }
 
   editItem(element: any): void {
-    this.product = element;
+    console.log(element)
+    this.category = element;
     this.create = false;
     this.isVisible = true;
   }
@@ -59,27 +61,27 @@ create = true;
   deleteItem(element: any): void {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: 'Esta acción eliminará el producto de forma permanente.',
+      text: 'Esta acción eliminará la Categoria de forma permanente.',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this._productService.deleteProduct(element.id).subscribe({
+        this._categoryService.deleteCategory(element.id).subscribe({
           next: (response: any) => {
             console.log('Producto eliminado:', response);
             Swal.fire(
               '¡Eliminado!',
-              'El producto ha sido eliminado con éxito.',
+              'La Categoria ha sido eliminado con éxito.',
               'success'
             );
           },
           error: (err) => {
-            console.error('Error al eliminar el producto:', err);
+            console.error('Error al eliminar la Categoria:', err);
             Swal.fire(
               'Error',
-              'Hubo un problema al eliminar el producto.',
+              'Hubo un problema al eliminar la Categoria.',
               'error'
             );
           }
@@ -87,7 +89,7 @@ create = true;
       } else {
         Swal.fire(
           'Cancelado',
-          'El producto no fue eliminado.',
+          'La Categoria no fue eliminada.',
           'info'
         );
       }

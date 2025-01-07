@@ -15,15 +15,15 @@ export class CategoryService {
     return this.http.get(`${environment.apiUrl}/category/getAll`);
   }
   
-  addProduct(product:any): Observable<any>{
+  addCategory(product:any): Observable<any>{
     return this.http.post(`${environment.apiUrl}/category/add`, product);
   }
 
-  editProduct(product:any, id:number): Observable<any>{
+  editCategory(product:any, id:number): Observable<any>{
     return this.http.put(`${environment.apiUrl}/category/update/${id}`, product);
   }
 
-  deleteProduct(id:number): Observable<any>{
+  deleteCategory(id:number): Observable<any>{
     return this.http.delete(`${environment.apiUrl}/category/delete/${id}`);
   }
 }

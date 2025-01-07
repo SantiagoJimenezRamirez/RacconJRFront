@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { ProductsService } from '../../../service/products.service';
+import { CategoryService } from '../../../service/category.service';
 
 @Component({
   selector: 'app-category-add',
@@ -13,23 +14,29 @@ import { ProductsService } from '../../../service/products.service';
 export class CategoryAddComponent {
  @Output() close = new EventEmitter<boolean>();
   @Output() save = new EventEmitter<any>();
-  @Input() product:any;
+  @Input() category:any;
   @Input() updateOrCreate = true;
   title = 'Agregar Cateogria'
 
   productForm: FormGroup;
   selectedFile: File | null = null;
 
-  constructor(private fb: FormBuilder, private _productService: ProductsService) {
+  constructor(private fb: FormBuilder, private _categoryService: CategoryService) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
     });
   }
   ngOnInit(): void {
+    console.log(this.category)
+    if(this.category){
+      this.title = "Editar Categoria"
+      this.productForm.patchValue(this.category)
+    }
+
     if(!this.updateOrCreate){
 
-      this.productForm.patchValue(this.product);
+      this.productForm.patchValue(this.category);
 
       this.title = "Editar Producto"
     }
@@ -46,17 +53,8 @@ export class CategoryAddComponent {
     console.log(this.productForm.value)
     if (this.productForm.invalid) return;
   
-    const formData = new FormData();
-    Object.keys(this.productForm.controls).forEach(key => {
-      formData.append(key, this.productForm.get(key)?.value);
-    });
- 
-    if (this.selectedFile) {
-      formData.append('image', this.selectedFile);
-    }
-  
     if (this.updateOrCreate) {
-      this._productService.addProduct(formData).subscribe({
+      this._categoryService.addCategory(this.productForm.value).subscribe({
         next: (response: any) => {
           Swal.fire({
             title: 'Successful',
@@ -66,6 +64,7 @@ export class CategoryAddComponent {
           }).then((result) => {
             if (result.isConfirmed) {
               this.save.emit(response.data);
+              this.category = undefined
             }
           });
         },
@@ -79,7 +78,7 @@ export class CategoryAddComponent {
         }
       });
     } else {
-      this._productService.editProduct(formData, this.product.id).subscribe({
+      this._categoryService.editCategory(this.productForm.value, this.category.id).subscribe({
         next: (response: any) => {
           Swal.fire({
             title: 'Successful',
@@ -106,6 +105,7 @@ export class CategoryAddComponent {
   
 
   closeModal(): void {
+    this.category = undefined
     this.close.emit(false);
   }
 }

@@ -62,4 +62,4 @@
       
     </div>
     
-    <app-category-add></app-category-add>
+    <app-category-add [category]="category" *ngIf="isVisible" (close)="reciveEmit($event)"></app-category-add>
