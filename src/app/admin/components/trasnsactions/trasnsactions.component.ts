@@ -25,6 +25,7 @@ export class TrasnsactionsComponent implements OnInit {
   displayedColumns = [
     { original: 'id', display: 'ID' },
     { original: 'name', display: 'Producto' },
+    { original: 'category', display: 'Categoria' },
     { original: 'price', display: 'Precio' },
     { original: 'stock', display: 'Stock' },
     { original: 'description', display: 'Descripción' },

@@ -12,6 +12,22 @@
                     class="text-red-500 text-sm">El nombre es requerido.</p>
             </div>
 
+            <div>
+                <label for="category" class="block text-sm font-medium text-gray-700">Categoría</label>
+                <select
+                  id="category"
+                  class="mt-1 block w-full border border-gray-300 rounded-md p-2 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  formControlName="categoryId"
+                >
+                  <option value="" disabled selected>Seleccione una categoría</option>
+                  <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                </select>
+                <p *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched" class="text-red-500 text-sm">
+                  La categoría es requerida.
+                </p>
+              </div>
+              
+
             <!-- Precio -->
             <div>
                 <label for="price" class="block text-sm font-medium text-gray-700">Precio</label>

@@ -11,6 +11,7 @@ import { TitleService } from '../../service/title.service';
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent {
+  isMenuOpen = false;
   section = ["dashboard", "inventory", "wallet", "budget", "analitics", "settings", "category"]
   sectionInfo = ["help", "log-out"]
   selectedItem: string | null = null;
@@ -22,6 +23,10 @@ export class MenuComponent {
   }
   getSvg(name: string){
     return `svg/${name}.svg`
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
   redirectTo(item: string) {

@@ -1,6 +1,6 @@
 <div class="flex w-full h-full overflow-hidden">
     <!-- Menú lateral -->
-    <div class="w-1/5 max-h-full flex flex-col items-center py-6 bg-custom-dark rounded-r-xl">
+    <div class="w-1/5 min-w-[250px] max-h-full hidden sm:flex flex-col items-center py-6 bg-custom-dark rounded-r-xl">
       <div class="w-full flex justify-center items-center">
         <img class="w-12 h-10" src="img/RACCON.png" alt="">
         <label class="font-extrabold text-white pl-3 text-xl" for="RACCON SAS">RACCON SAS</label>
@@ -39,8 +39,52 @@
     </div>
   
     <!-- Contenido dinámico -->
-    <div class="w-4/5 overflow-y-auto">
-        <router-outlet />
+    <div class="w-full flex flex-col overflow-y-auto sm:block">
+      <!-- Menú lateral móvil -->
+    <div class="sm:hidden fixed top-0 left-0 w-full bg-custom-dark z-50" id="mobile-header">
+      <div class="flex items-center justify-between px-4 py-4 bg-[#081147]">
+        <div class="flex items-center cursor-pointer" (click)="toggleMenu()">
+          <img class="w-10 h-10" src="img/RACCON.png" alt="Logo RACCON">
+          <span class="font-extrabold text-white pl-3 text-lg">RACCON SAS</span>
+        </div>
+        <button (click)="toggleMenu()" class="text-white focus:outline-none">
+          <img src="svg/menu.svg" alt="Cerrar" class="w-6 h-6">
+        </button>
+      </div>
+    </div>
+    <div  
+      class="sm:hidden fixed top-[64px] left-0 w-full bg-custom-dark z-40 transform -translate-y-full transition-transform duration-300"
+      [ngClass]="{'-translate-y-full': !isMenuOpen, 'translate-y-0': isMenuOpen}" id="mobile-menu">
+      <hr class="border-gray-600">
+      <div class="py-4">
+        <div *ngFor="let item of section" (click)="redirectTo(item)" class="h-12 w-full flex px-6 items-center cursor-pointer">
+          <img [src]="getSvg(item)" alt="" class="w-6 h-6 mr-4">
+          <span class="text-white font-medium">{{ item | titlecase }}</span>
+        </div>
+      </div>
+      <hr class="border-gray-600">
+      <div class="py-4">
+        <div *ngFor="let item of sectionInfo" (click)="redirectTo(item)" class="h-12 w-full flex px-6 items-center cursor-pointer">
+          <img [src]="getSvg(item)" alt="" class="w-6 h-6 mr-4">
+          <span class="text-white font-medium">{{ item | titlecase }}</span>
+        </div>
+        <div class="flex justify-center items-center py-4">
+          <label
+            class="w-16 h-8 shadow-inner rounded-full flex justify-around items-center overflow-hidden outline outline-2 outline-offset-2">
+            <input type="checkbox" class="peer hidden" />
+            <div
+              class="w-6 h-6 flex justify-center items-center text-white duration-500 rounded-full peer-checked:-translate-x-8">
+              <img src="svg/sun.svg" alt="">
+            </div>
+            <div
+              class="w-6 h-6 flex justify-center items-center text-white rounded-full duration-500 translate-x-8 peer-checked:translate-x-0">
+              <img src="svg/moon.svg" alt="">
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+        <router-outlet class=" mt-16" />
     </div>
   </div>
   

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ProductsService } from '../../../service/products.service';
 import Swal from 'sweetalert2';
 import { MatTableModule } from '@angular/material/table';
+import { CategoryService } from '../../../service/category.service';
 
 @Component({
   selector: 'app-products-add',
@@ -19,13 +20,15 @@ export class ProductsAddComponent implements OnInit{
   @Input() product:any;
   @Input() updateOrCreate = true;
   title = 'Agregar Producto'
+  categories : any;
 
   productForm: FormGroup;
   selectedFile: File | null = null;
 
-  constructor(private fb: FormBuilder, private _productService: ProductsService) {
+  constructor(private fb: FormBuilder, private _productService: ProductsService, private _categoryService: CategoryService) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
+      categoryId: ['', Validators.required],
       price: [0, [Validators.required, Validators.min(0)]],
       stock: [0, [Validators.required, Validators.min(0)]],
       description: ['', Validators.required],
@@ -33,6 +36,13 @@ export class ProductsAddComponent implements OnInit{
     });
   }
   ngOnInit(): void {
+    
+    this._categoryService.getAll().subscribe({
+      next: (response: any) => {
+        this.categories = response
+      }
+    })
+
     if(!this.updateOrCreate){
 
       this.productForm.patchValue(this.product);
@@ -49,7 +59,6 @@ export class ProductsAddComponent implements OnInit{
   }
 
   onSubmit(): void {
-    if (this.productForm.invalid) return;
   
     const formData = new FormData();
     Object.keys(this.productForm.controls).forEach(key => {
