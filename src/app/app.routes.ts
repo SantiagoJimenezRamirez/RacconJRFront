@@ -13,6 +13,7 @@ import { BudgetComponent } from './admin/components/budget/budget.component';
 import { AnaliticsComponent } from './admin/components/analitics/analitics.component';
 import { SettingsComponent } from './admin/components/settings/settings.component';
 import { CategoryComponent } from './admin/components/category/category.component';
+import { ProductCategorySectionComponent } from './customer/components/product-category-section/product-category-section.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirige a /login en la ruta raíz
@@ -20,6 +21,7 @@ export const routes: Routes = [
     { path: 'sign-up', component: SignUpComponent,  },
     { path: 'shop', component: ShopComponent,  },
     { path: 'home', component: HomeComponent, }, 
+    { path: 'product-category-section', component: ProductCategorySectionComponent, }, 
     { path: 'admin', component: MenuComponent, children:[
         {path: 'category', component: CategoryComponent},
         { path: 'dashboard', component: DashboardComponent,  },

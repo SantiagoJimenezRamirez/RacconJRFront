@@ -1,0 +1,93 @@
+<div class="w-screen h-screen flex flex-col">
+    <!-- Header -->
+    <div class="w-full h-16 flex bg-slate-500">
+      <!-- Logo -->
+      <div class="w-auto h-full flex items-center justify-center cursor-pointer flex-shrink-0">
+        <img class="w-20 p-3" src="img/RACCON.png" alt="">
+        <label class="text-3xl font-bold" for="">RACCON SAS</label>
+      </div>
+  
+      <!-- Navegación -->
+      <div class="flex-grow flex justify-center items-center bg-red-200 h-full relative space-x-8">
+        <!-- Sección Home -->
+        <label for="home" class="mr-4 text-lg font-bold">Home</label>
+  
+        <!-- Contenedor de Categorías -->
+        <div class="relative">
+          <!-- Título principal con flecha -->
+          <div
+            class="flex items-center justify-between px-4 py-2 cursor-pointer rounded"
+            (click)="toggleDropdown('categories')"
+          >
+            <span class="text-lg font-bold">{{ selectedCategory }}</span>
+            <img
+              src="svg/arrow.svg"
+              alt="Flecha"
+              class="w-4 h-4 rotate-180 transition-transform duration-300"
+              [ngClass]="{ 'rotate-0': isCategoriesOpen }"
+            />
+          </div>
+  
+          <!-- Dropdown (Categorías) -->
+          <div
+            class="absolute left-0 w-full bg-gray-100 border border-gray-300 rounded mt-2 shadow-lg overflow-hidden transition-all duration-300"
+            [ngStyle]="{ 'max-height': isCategoriesOpen ? '200px' : '0', 'opacity': isCategoriesOpen ? '1' : '0' }"
+          >
+            <ul class="py-2">
+              <li
+                *ngFor="let category of categories"
+                class="px-4 py-2 hover:bg-gray-300 cursor-pointer"
+                (click)="selectCategory(category)"
+              >
+                {{ category }}
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+        <!-- Contenedor de Explore -->
+        <div class="relative">
+          <!-- Título principal con flecha -->
+          <div
+            class="flex items-center justify-between px-4 py-2 cursor-pointer rounded"
+            (click)="toggleDropdown('explore')"
+          >
+            <span class="text-lg font-bold">{{ selectedExplore }}</span>
+            <img
+              src="svg/arrow.svg"
+              alt="Flecha"
+              class="w-4 h-4 rotate-180 transition-transform duration-300"
+              [ngClass]="{ 'rotate-0': isExploreOpen }"
+            />
+          </div>
+  
+          <!-- Dropdown (Explore) -->
+          <div
+            class="absolute left-0 w-full bg-gray-100 border border-gray-300 rounded mt-2 shadow-lg overflow-hidden transition-all duration-300"
+            [ngStyle]="{ 'max-height': isExploreOpen ? '200px' : '0', 'opacity': isExploreOpen ? '1' : '0' }"
+          >
+            <ul class="py-2">
+              <li
+                *ngFor="let item of exploreItems"
+                class="px-4 py-2 hover:bg-gray-300 cursor-pointer"
+                (click)="selectExplore(item)"
+              >
+                {{ item }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex bg-white rounded-full shadow-lg border border-gray-300">
+            <input 
+                type="text" 
+                placeholder="Buscar..." 
+                class="border-none outline-none bg-transparent text-black p-0 m-0 mx-3 my-2 flex-grow"
+            >
+            <img src="svg/search.svg" alt="Buscar" class="py-1 pr-4 cursor-pointer">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
