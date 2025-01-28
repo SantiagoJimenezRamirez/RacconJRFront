@@ -1,0 +1,21 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
+
+@Component({
+  selector: 'app-not-found',
+  imports: [CommonModule,],
+  templateUrl: './not-found.component.html',
+  styleUrl: './not-found.component.scss'
+})
+export class NotFoundComponent {
+
+  constructor(private router: Router){
+
+  }
+
+
+  goToHome() {
+    this.router.navigate(['/']); // Redirige al inicio
+  }
+}
