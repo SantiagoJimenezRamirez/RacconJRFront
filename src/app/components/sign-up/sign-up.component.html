@@ -89,7 +89,7 @@
         <div class="flex flex-col w-full h-full px-1 lg:px-7 xl:px-7 sm:px-7">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="flex flex-col px-10 pt-2">
-                    <label for="" class="text-xl font-bold custom-dark">FullName</label>
+                    <label for="" class="text-xl font-bold custom-dark">Nombre completo</label>
                     <div class="w-full h-auto rounded-full bg-slate-200 shadow-xl flex items-center justify-center my-3">
                         <input class="px-4 w-full mx-5 bg-transparent border-none outline-none my-2" type="text" placeholder="Santiago Jiménez Ramírez" name="" id="" formControlName="fullName">
                     </div>
@@ -101,13 +101,13 @@
                     </div>
                 </div>
                 <div class="flex flex-col px-10 pt-2">
-                    <label for="" class="text-xl font-bold custom-dark">Username</label>
+                    <label for="" class="text-xl font-bold custom-dark">Nombre de usuario</label>
                     <div class="w-full h-auto rounded-full bg-slate-200 shadow-xl flex items-center justify-center my-3">
                         <input class="px-4 w-full mx-5 bg-transparent border-none outline-none my-2" type="text" placeholder="Santiago JR" name="" id="" formControlName="username">
                     </div>
                 </div>
                 <div class="flex flex-col px-10 pt-2">
-                    <label for="" class="text-xl font-bold custom-dark">Password</label>
+                    <label for="" class="text-xl font-bold custom-dark">Contraseña</label>
                     <div class="w-full h-auto rounded-full bg-slate-200 shadow-xl flex items-center justify-center my-3">
                         <input class="px-4 w-full mx-5 bg-transparent border-none outline-none my-2" type="password" placeholder="**********" name="" id="" formControlName="password">
                     </div>
@@ -117,16 +117,16 @@
                         <input class="my-1" type="checkbox" formControlName="checkbox">
                     </div>
                     <div class="h-full flex justify-start items-start">
-                        <label for="" class="text-[11px]">I have read and accept the <label class="font-bold underline text-blue-900 cursor-pointer" for="" (click)="termsConditions = true">terms and conditions</label></label>
+                        <label for="" class="text-[11px]">He leído y acepto los <label class="font-bold underline text-blue-900 cursor-pointer" for="" (click)="termsConditions = true">términos y condiciones</label></label>
                     </div>
                 </div>
                 <div class="flex flex-col px-10 py-3 ">
                     <button class="w-full h-auto py-2 bg-[#03071e] text-white font-bold rounded-lg" 
                     [ngClass]="{'opacity-50 cursor-not-allowed': !form.valid}"
-                    [disabled]="!form.valid">Submit</button>
+                    [disabled]="!form.valid">Enviar</button>
                 </div>
                 <div class="w-full flex justify-center items-center pb-4">
-                    <label class="text-[12px]" for="">Do you already have an account? </label><a [href]="'/login'" class="text-[12px] px-2 text-[#03071e] font-bold">Log in</a>
+                    <label class="text-[12px]" for="">¿Ya tienes una cuenta?</label><a [href]="'/login'" class="text-[12px] px-2 text-[#03071e] font-bold">Inicia sesión</a>
                 </div>
             </form>
         </div>

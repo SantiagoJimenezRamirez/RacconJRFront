@@ -2,20 +2,18 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../service/user.service';
 import Swal from 'sweetalert2';
+import { UserService } from '../../service/user.service';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  selector: 'app-forgot-password',
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './forgot-password.component.html',
+  styleUrl: './forgot-password.component.scss'
 })
-export class LoginComponent implements OnInit {
-  form = new FormGroup({
-    'username': new FormControl("", Validators.required),
-    'password': new FormControl("", Validators.required)
+export class ForgotPasswordComponent implements OnInit{
+form = new FormGroup({
+    'email': new FormControl("", Validators.email),
   })
 
   constructor(private router: Router,
@@ -28,22 +26,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this._userService.login(this.form.value).subscribe({
-      next: (response) => {
+    this._userService.resetPassword(this.form.get('email')?.value).subscribe({
+      next: (response:any) => {
         Swal.fire({
           title: 'Succescfull',
           text: response.msg,
           icon: 'success',
           confirmButtonText: 'Aceptar'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            if (response.user.role === "ADMIN") {
-              this.router.navigate(['/dashboard']); 
-            } else {
-              this.router.navigate(['/home']);
-            }
-          }
-        });
+        })
       },
       error: (e) => {
         Swal.fire({
@@ -59,5 +49,4 @@ export class LoginComponent implements OnInit {
   goTo(route:string) {
     this.router.navigate([route]); // Redirige al inicio
   }
-
 }
