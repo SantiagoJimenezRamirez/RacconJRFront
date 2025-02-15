@@ -19,6 +19,10 @@ export class UserService {
     return this.http.post(`${environment.apiUrl}/user/login`, user);
   }
 
+  resetPassword(email : any){
+    return this.http.post(`${environment.apiUrl}/user/resetPassword`, email);
+  }
+
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);

@@ -8,11 +8,12 @@ import {MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import Swal from 'sweetalert2';
+import { ScrappingAddComponent } from "../scrapping-add/scrapping-add.component";
 
 @Component({
   selector: 'app-trasnsactions',
   standalone: true,
-  imports: [ProductsAddComponent, CommonModule, MatTableModule, MatIconModule, MatMenuModule],
+  imports: [ProductsAddComponent, CommonModule, MatTableModule, MatIconModule, MatMenuModule, ScrappingAddComponent],
   templateUrl: './trasnsactions.component.html',
   styleUrl: './trasnsactions.component.scss'
 })
@@ -21,11 +22,12 @@ export class TrasnsactionsComponent implements OnInit {
   product:any;
   data:any;
   isVisible= false;
+  isVisibleScrapping = false;
   title = "";
   displayedColumns = [
     { original: 'id', display: 'ID' },
     { original: 'name', display: 'Producto' },
-    { original: 'category', display: 'Categoria' },
+    { original: 'categoryName', display: 'Categoria' },
     { original: 'price', display: 'Precio' },
     { original: 'stock', display: 'Stock' },
     { original: 'description', display: 'Descripción' },
@@ -49,6 +51,10 @@ export class TrasnsactionsComponent implements OnInit {
 
   reciveEmit(event:boolean){
     this.isVisible = event;
+  }
+
+  reciveEmitScrapping(event:any){
+    this.isVisibleScrapping = event.isVisible;
   }
 
   addProduct(){

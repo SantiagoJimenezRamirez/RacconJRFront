@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from '../enviroments/enviroment';
 
 @Injectable({
@@ -11,8 +11,23 @@ export class ProductsService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getAll():Observable<any>{
-    return this.http.get(`${environment.apiUrl}/product/getAll`);
+  getAll(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/product/getAll`).pipe(
+      map((response: any) => {
+        if (response.ok && response.products) {
+          response.products = response.products.map((product: any) => ({
+            ...product,
+            categoryName: product.category?.name, // Añadimos categoryName al nivel superior
+          }));
+        }
+        return response;
+      })
+    );
+  }
+  
+
+  scrappingProduct(route:string){
+    return this.http.post(`${environment.apiScrappUrl}/scrape_product`, {route});
   }
   
   addProduct(product:any): Observable<any>{
